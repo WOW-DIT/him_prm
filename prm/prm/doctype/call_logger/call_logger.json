@@ -1,0 +1,77 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{room_id}-{nusing_station}-{######}",
+ "creation": "2023-10-08 13:23:40.146588",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nursing_station",
+  "room_id",
+  "column_break_3",
+  "date",
+  "room_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "room_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Room ID",
+   "options": "Patient Room",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Datetime",
+   "label": "Date"
+  },
+  {
+   "fetch_from": "room_id.room_no",
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "label": "Room Number"
+  },
+  {
+   "fieldname": "nursing_station",
+   "fieldtype": "Link",
+   "label": "Nursing Station",
+   "options": "Nursing Station",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-23 16:59:01.761196",
+ "modified_by": "Administrator",
+ "module": "prm",
+ "name": "Call Logger",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

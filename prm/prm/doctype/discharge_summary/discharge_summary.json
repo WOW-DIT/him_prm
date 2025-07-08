@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{hospital_code}-{########}",
+ "creation": "2023-03-01 15:08:33.336053",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "patient_info_section",
+  "hospital",
+  "patient_identifier",
+  "column_break_4",
+  "hospital_code",
+  "patient_name",
+  "section_break_7",
+  "visit_no",
+  "discharge_summary"
+ ],
+ "fields": [
+  {
+   "fieldname": "patient_info_section",
+   "fieldtype": "Section Break",
+   "label": "Patient Info"
+  },
+  {
+   "fetch_from": "patient_identifier.hospital_id",
+   "fieldname": "hospital",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Hospital",
+   "options": "Hospitals",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "patient_identifier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Patient Identifier",
+   "options": "Patients",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "hospital.hospital_suffix",
+   "fieldname": "hospital_code",
+   "fieldtype": "Data",
+   "label": "Hospital Code",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "patient_identifier.full_name",
+   "fieldname": "patient_name",
+   "fieldtype": "Data",
+   "label": "Patient Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Visit Info"
+  },
+  {
+   "fieldname": "visit_no",
+   "fieldtype": "Link",
+   "label": "Visit No",
+   "options": "Visits",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "discharge_summary",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Discharge Summary",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-05 14:03:50.605767",
+ "modified_by": "Administrator",
+ "module": "prm",
+ "name": "Discharge Summary",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

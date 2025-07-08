@@ -1,0 +1,259 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{hospital_code}-{department}-{room_no}",
+ "creation": "2023-02-28 15:51:45.045012",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "room_info_section",
+  "hospital",
+  "department",
+  "floor_no",
+  "room_no",
+  "column_break_4",
+  "hospital_code",
+  "nursing_station",
+  "room_name",
+  "room_monitor_info_section",
+  "patient_info",
+  "finance_info",
+  "nurse_call_up",
+  "can_exit",
+  "column_break_11",
+  "control_ac",
+  "control_lightings",
+  "control_curtain",
+  "translation",
+  "column_break_15",
+  "iptv",
+  "internet",
+  "apps",
+  "column_break_19",
+  "room_service",
+  "maintenance",
+  "complaint",
+  "emergency_meeting_tab",
+  "is_calling",
+  "meeting_link",
+  "meeting"
+ ],
+ "fields": [
+  {
+   "fieldname": "room_info_section",
+   "fieldtype": "Section Break",
+   "label": "Room Info"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "Hospital Department"
+  },
+  {
+   "fieldname": "hospital",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Hospital ",
+   "options": "Hospitals",
+   "reqd": 1
+  },
+  {
+   "fieldname": "floor_no",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Floor No",
+   "options": "\nG\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10",
+   "reqd": 1
+  },
+  {
+   "fieldname": "room_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Room No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "hospital.hospital_suffix",
+   "fieldname": "hospital_code",
+   "fieldtype": "Data",
+   "label": "Hospital Code",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "room_name",
+   "fieldtype": "Data",
+   "label": "Room Name"
+  },
+  {
+   "fieldname": "room_monitor_info_section",
+   "fieldtype": "Section Break",
+   "label": "Room Monitor Info"
+  },
+  {
+   "default": "0",
+   "fieldname": "patient_info",
+   "fieldtype": "Check",
+   "label": "Patient Info"
+  },
+  {
+   "default": "0",
+   "fieldname": "finance_info",
+   "fieldtype": "Check",
+   "label": "Finance Info"
+  },
+  {
+   "default": "0",
+   "fieldname": "nurse_call_up",
+   "fieldtype": "Check",
+   "label": "Nurse Call Up"
+  },
+  {
+   "default": "0",
+   "fieldname": "can_exit",
+   "fieldtype": "Check",
+   "label": "CanExit"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "control_ac",
+   "fieldtype": "Check",
+   "label": "Control AC"
+  },
+  {
+   "default": "0",
+   "fieldname": "control_lightings",
+   "fieldtype": "Check",
+   "label": "Control lightings"
+  },
+  {
+   "default": "0",
+   "fieldname": "control_curtain",
+   "fieldtype": "Check",
+   "label": "Control curtain"
+  },
+  {
+   "default": "0",
+   "fieldname": "translation",
+   "fieldtype": "Check",
+   "label": "Translation"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "iptv",
+   "fieldtype": "Check",
+   "label": "IPTV"
+  },
+  {
+   "default": "0",
+   "fieldname": "internet",
+   "fieldtype": "Check",
+   "label": "Internet"
+  },
+  {
+   "default": "0",
+   "fieldname": "apps",
+   "fieldtype": "Check",
+   "label": "APP's"
+  },
+  {
+   "fieldname": "column_break_19",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "room_service",
+   "fieldtype": "Check",
+   "label": "Room Service"
+  },
+  {
+   "default": "0",
+   "fieldname": "maintenance",
+   "fieldtype": "Check",
+   "label": "Maintenance"
+  },
+  {
+   "default": "0",
+   "fieldname": "complaint",
+   "fieldtype": "Check",
+   "label": "Complaint"
+  },
+  {
+   "fieldname": "emergency_meeting_tab",
+   "fieldtype": "Tab Break",
+   "label": "Emergency Meeting"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_calling",
+   "fieldtype": "Check",
+   "label": "Is Calling"
+  },
+  {
+   "fieldname": "meeting_link",
+   "fieldtype": "Text",
+   "label": "Meeting Link"
+  },
+  {
+   "fieldname": "nursing_station",
+   "fieldtype": "Link",
+   "label": "Nursing Station",
+   "options": "Nursing Station",
+   "reqd": 1
+  },
+  {
+   "fieldname": "meeting",
+   "fieldtype": "Link",
+   "label": "Meeting",
+   "options": "Meeting Room"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-02-13 10:03:57.081430",
+ "modified_by": "Administrator",
+ "module": "prm",
+ "name": "Patient Room",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

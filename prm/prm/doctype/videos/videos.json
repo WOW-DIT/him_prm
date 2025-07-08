@@ -1,0 +1,39 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:video_name",
+ "creation": "2023-04-27 09:43:28.018032",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "video_name",
+  "url"
+ ],
+ "fields": [
+  {
+   "fieldname": "video_name",
+   "fieldtype": "Data",
+   "label": "Video Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Text",
+   "label": "URL"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-11-05 14:01:21.960588",
+ "modified_by": "Administrator",
+ "module": "prm",
+ "name": "Videos",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

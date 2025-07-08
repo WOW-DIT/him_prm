@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-14 10:58:10.772757",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "label",
+  "device_address",
+  "function_name",
+  "status_url",
+  "active"
+ ],
+ "fields": [
+  {
+   "fieldname": "label",
+   "fieldtype": "Select",
+   "label": "Label",
+   "options": "Primary Light\nSecondary Light\nCorridor\nBathroom"
+  },
+  {
+   "fieldname": "device_address",
+   "fieldtype": "Data",
+   "label": "Device Address"
+  },
+  {
+   "fieldname": "status_url",
+   "fieldtype": "Data",
+   "label": "Status URL"
+  },
+  {
+   "fieldname": "function_name",
+   "fieldtype": "Data",
+   "label": "Function Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-03-19 15:03:36.709722",
+ "modified_by": "Administrator",
+ "module": "prm",
+ "name": "Devices Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
