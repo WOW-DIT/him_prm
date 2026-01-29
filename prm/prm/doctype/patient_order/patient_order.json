@@ -92,10 +92,11 @@
    "label": "VAT"
   },
   {
+   "default": "15%",
    "fieldname": "vat_percent",
    "fieldtype": "Select",
    "label": "VAT Percent",
-   "options": "5 %\n10 %\n15 %\n20%\n25 %"
+   "options": "5%\n10%\n15%\n20%\n25%"
   },
   {
    "fieldname": "column_break_10",
@@ -104,7 +105,7 @@
   {
    "fieldname": "vat",
    "fieldtype": "Currency",
-   "label": "VAT"
+   "label": "VAT Amount"
   },
   {
    "default": "0",
@@ -115,7 +116,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-11 13:26:57.632509",
+ "modified": "2025-12-21 15:05:01.775397",
  "modified_by": "Administrator",
  "module": "prm",
  "name": "Patient Order",

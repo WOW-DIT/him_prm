@@ -38,7 +38,9 @@
   "emergency_meeting_tab",
   "is_calling",
   "meeting_link",
-  "meeting"
+  "meeting",
+  "pumps_monitor_tab",
+  "pumps_monitor"
  ],
  "fields": [
   {
@@ -226,11 +228,26 @@
    "fieldtype": "Link",
    "label": "Meeting",
    "options": "Meeting Room"
+  },
+  {
+   "fieldname": "pumps_monitor_tab",
+   "fieldtype": "Tab Break",
+   "label": "Pumps Monitor"
+  },
+  {
+   "fieldname": "pumps_monitor",
+   "fieldtype": "HTML",
+   "label": "Pumps Monitor"
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2024-02-13 10:03:57.081430",
+ "links": [
+  {
+   "link_doctype": "Pump",
+   "link_fieldname": "patient_room"
+  }
+ ],
+ "modified": "2025-10-20 11:39:10.428548",
  "modified_by": "Administrator",
  "module": "prm",
  "name": "Patient Room",

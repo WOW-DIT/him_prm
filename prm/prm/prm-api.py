@@ -22,16 +22,14 @@ def nursingCall(roomNumber, value):
                 return {"result": 1}
             else:
                 return {"result": 0}
-        # if len(deviceRooms) > 0:
-        #     devices = frappe.get_doc("Devices", deviceRooms[0].name)
-            
-        #     url = f'{devices.beep_address}{value}'
-        #     # A GET request to the API
-        #     response = requests.get(url,verify=False)
-        #     if response.status_code == 200:
-        #         return {"result": 1}
-        #     else:
-        #         return {"result": 0}
+
+
+@frappe.whitelist()
+def ringingStatus(room_id):
+    is_ringing = frappe.get_value("Patient Room", room_id, "is_calling")
+
+    return is_ringing == 1 if is_ringing != None else False
+
 
 @frappe.whitelist()
 def onOffLights(roomNumber, index):

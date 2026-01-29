@@ -9,8 +9,8 @@
    "label": "Patients"
   }
  ],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">PRM</span>\",\"col\":12}},{\"type\":\"chart\",\"data\":{\"chart_name\":\"Complaints\",\"col\":6}},{\"type\":\"chart\",\"data\":{\"chart_name\":\"Patients\",\"col\":6}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Rooms\",\"col\":4}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Visits\",\"col\":4}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Emergency Calls\",\"col\":4}},{\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Complaints\",\"col\":4}}]",
- "creation": "2023-11-09 11:06:59.429825",
+ "content": "[{\"id\":\"3jb8yAgNJ4\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">PRM</span>\",\"col\":12}},{\"id\":\"AOuUZCWVhs\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Complaints\",\"col\":6}},{\"id\":\"Xrrh61IpG8\",\"type\":\"chart\",\"data\":{\"chart_name\":\"Patients\",\"col\":6}},{\"id\":\"talOkvaQb7\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"oWzlVY7Crz\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Shortcuts</b></span>\",\"col\":12}},{\"id\":\"bdzimOw3FA\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"TV Channels\",\"col\":3}},{\"id\":\"xjrI7JbrXm\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"C49bfY-LkD\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Rooms\",\"col\":4}},{\"id\":\"GgkASSzOIA\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Visits\",\"col\":4}},{\"id\":\"iNe532ynRD\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Emergency Calls\",\"col\":4}},{\"id\":\"nuA3zwZrJH\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Complaints\",\"col\":4}}]",
+ "creation": "2025-07-07 14:59:42.696240",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -21,7 +21,7 @@
  "is_hidden": 0,
  "label": "PRM",
  "links": [],
- "modified": "2024-10-10 14:44:23.668684",
+ "modified": "2025-12-21 12:28:53.699635",
  "modified_by": "Administrator",
  "module": "prm",
  "name": "PRM",
@@ -58,6 +58,15 @@
   }
  ],
  "sequence_id": 5.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "TV Channels",
+   "link_to": "TV Channel",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
  "title": "PRM"
 }
