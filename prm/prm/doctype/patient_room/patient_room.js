@@ -136,7 +136,7 @@ const style = `
    Status Badge (Base)
    ========================= */
 .status-badge {
-	padding: 4px 10px;
+	padding: 4px 0px;
 	border-radius: 999px;
 	font-size: 0.75rem;
 	font-weight: 700;
@@ -197,6 +197,20 @@ const style = `
 	display: flex;
 	gap: 14px;
 	flex: 1;
+}
+
+.drug-library {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	gap: 15px;
+	height: 30px;
+}
+.drug-library-color {
+	height: 100%;
+	width: 50px;
+	border: 1px solid black;
+	border-radius: 8px;
 }
 
 /* -------------------------
@@ -415,9 +429,8 @@ function get_rack_element(rack_data) {
 }
 
 function create_rack(rack_data) {
-	const {rack_id, rack_name, operation_status, power_type, battery_status} = rack_data;
+	const {rack_id, rack_name, operation_status, power_type, icons, battery_status} = rack_data;
 
-	debugger
 	const racks_container = document.getElementById("racks");
 
 	const rack = document.createElement("div");
@@ -433,7 +446,7 @@ function create_rack(rack_data) {
 						<div class="top-right"><h6>${operation_status}</h6></div>
 					</div>
 					<div class="rack-header-segment">
-						<div class="top-right">${renderPowerType(power_type)}</div>
+						<div class="top-right">${renderPowerType(icons.power_icon)}</div>
 						<div class="top-right">${renderRackBatteryStatus(battery_status)}</div>
 					</div>
 				</div>
@@ -472,7 +485,7 @@ function set_rack_pump(current_pump, pump_data) {
 	const ip_address = pump_data.ip_address;
 	const op_status = (pump_data.operation_status || "stop").toLowerCase();
 	const flow_rate = pump_data.set_flow_rate || "0";
-	const increment_rate = pump_data.increment_in_value_delivered || "0";
+	const increment_rate = pump_data.increment_rate || "0";
 	const vtbi = pump_data.vtbi || "0";
 
 	const alarm = pump_data.alarm_status || "NO";
@@ -516,7 +529,7 @@ function set_rack_pump(current_pump, pump_data) {
 							<span>${vtbi}</span>
 						</div>
 						<div class="metric">
-							<label>Increment</label>
+							<label>Increment/Delivered (mL)</label>
 							<span>${increment_rate}</span>
 						</div>
 					</div>
@@ -575,10 +588,20 @@ function set_standalone_pump(current_pump, pump_data) {
 	const device_name = pump_data.device_name;
 	const ip_address = pump_data.ip_address;
 	const op_status = (pump_data.operation_status || "stop").toLowerCase();
-	const flow_rate = pump_data.set_flow_rate || "0";
-	const increment_rate= pump_data.increment_in_value_delivered || "0";
+	let flow_rate;
+	let flow_rate_unit = "mL/h";
+	if (pump_data.dosage) {
+		flow_rate = pump_data.dosage.rate || "0";
+		flow_rate_unit = pump_data.dosage.unit || "mL/h";
+	} else {
+		flow_rate = pump_data.set_flow_rate || "0";
+	}
+	const increment_rate= pump_data.increment_rate || pump_data.increment_in_value_delivered || pump_data.volume_delivered || "0";
 	const vtbi = pump_data.vtbi || "0";
 	const active_alarms = pump_data.active_alarms;
+	const drug_library = pump_data.drug_library;
+	const dilution = pump_data.dilution;
+	const weight = pump_data.weight;
 
 	const STANDALONE_PUMP_HTML = `
 		<div class="pump-card-inner">
@@ -591,8 +614,9 @@ function set_standalone_pump(current_pump, pump_data) {
 				</div>
 
 				<div class="device-meta">
+					<div class="occlusion-percent">{{occlusion_percent}}</div>
 					<div class="power-type">{{power_type}}</div>
-					<div class="battery-level">🔋 {{battery_level}}</div>
+					<div class="battery-level">{{battery_level}}</div>
 					<div class="status-badge status-{{status_class}}">
 					{{status_label}}
 					</div>
@@ -611,7 +635,7 @@ function set_standalone_pump(current_pump, pump_data) {
 				<!-- Operation Panel -->
 				<div class="operation-panel">
 					<div class="flow-rate-big">
-						{{flow_rate}} <span>mL/h</span>
+						{{flow_rate}} <span>{{flow_rate_unit}}</span>
 					</div>
 
 					<div class="operation-metrics">
@@ -620,22 +644,34 @@ function set_standalone_pump(current_pump, pump_data) {
 							<span>{{vtbi}}</span>
 						</div>
 						<div class="metric">
-							<label>Increment</label>
+							<label>Increment/Delivered (mL)</label>
 							<span>{{increment_rate}}</span>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="drug-library">
+			${
+				drug_library?
+				`
+					<div class="drug-library-color" style="background-color: ${drug_library.color}"></div>
+					<div><strong>${drug_library.title}</strong></div>
+				` :
+				""
+			}
 			</div>
 		</div>
 	`;
 	current_pump.innerHTML = STANDALONE_PUMP_HTML
 	.replace("{{device_name}}", device_name || "--")
 	.replace("{{ip_address}}", ip_address || "")
-	.replace("{{power_type}}", renderPowerType(pump_data.power_type))
-	.replace("{{battery_level}}", pump_data.battery_level ?? "--")
+	.replace("{{occlusion_percent}}", renderOcclusionIcon(pump_data.icons.occlusion_icon))
+	.replace("{{power_type}}", renderPowerType(pump_data.icons.power_icon))
+	.replace("{{battery_level}}", renderBatteryIcon(pump_data.icons.battery_icon))
 	.replace("{{status_label}}", getStatusLabel(op_status))
 	.replace("{{status_class}}", op_status)
 	.replace("{{flow_rate}}", flow_rate)
+	.replace("{{flow_rate_unit}}", flow_rate_unit)
 	.replace("{{vtbi}}", vtbi)
 	.replace("{{increment_rate}}", increment_rate)
 	.replace("{{mode}}", capitalize(op_status));
@@ -781,7 +817,7 @@ function renderRackBatteryStatus(battery_status) {
 	if (String(battery_status) === "0") {
 		return `
 			<div class="battery_status">
-				<img src="/files/fully_charged.svg" width="25">
+				<img src="/files/fully_charged_green.svg" width="25">
 			</div>
 		`
 	} else if (String(battery_status) === "1") {
@@ -799,20 +835,36 @@ function renderRackBatteryStatus(battery_status) {
 	}
 }
 
-function renderPowerType(power_type) {
-	if (String(power_type) === "1") {
-		return `
-			<div class="power_type">
-				<img src="/files/plugged_green.svg" width="25">
-			</div>
-		`
-	} else {
-		return `
-			<div class="power_type">
-				<img src="/files/unplugged.svg" width="25">
-			</div>
-		`
-	}
+function renderOcclusionIcon(icon) {
+	return `
+		<div class="occlusion_percent">
+			<img src="${icon}" width="35">
+		</div>
+	`
+}
+
+function renderPowerType(icon) {
+	// if (String(power_type) === "1") {
+	return `
+		<div class="power_type">
+			<img src="${icon}" width=35">
+		</div>
+	`
+	// } else {
+	// 	return `
+	// 		<div class="power_type">
+	// 			<img src="/files/unplugged.svg" width="25">
+	// 		</div>
+	// 	`
+	// }
+}
+
+function renderBatteryIcon(icon) {
+	return `
+		<div class="battery_level">
+			<img src="${icon}" width="35">
+		</div>
+	`
 }
 
 /* Helper: readable label with emoji */
